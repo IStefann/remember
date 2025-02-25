@@ -1,37 +1,17 @@
 import "./style.css";
+import { CreateTask, createCategory } from "./maker.js";
 
-class task {
-    constructor(title, description, dateAdded, dueDate, priority, category) {
-        this.title = title;
-        this.description = description;
-        this.dateAdded = dateAdded;
-        this.dueDate = dueDate;
-        this.priority = priority
-        this.category = category;
-    }
-}
+let titleTemp = "Task";
+let descTemp = "A very long description";
+let dateAddedTemp = "1.1";
+let dateDueTemp = "6.1";
+let priorityTemp = 2;
 
-class category {
-    constructor(name)
-    {
-        this.name = name;
-    }
-}
+let tasks = [];
+let categories = [];
 
-class TaskManager {
-    constructor() {
-        this.tasks = [];
-    }
+categories.push(createCategory("Shopping"));
+tasks.push(CreateTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, categories[0]));
 
-    addTask(task) {
-        this.tasks.push(task);
-    }
-
-    getTasksByCategory(category) {
-        return this.tasks.filter(task => task.category === category);
-    }
-}
-
-const taskManager = new TaskManager();
-taskManager.addTask(new task("Task", "description", "1.1", "5.1", "Important!", null));
-taskManager.addTask(new task("Task2", "description", "1.1", "5.1", "Important!", null));
+categories.map((item) => console.log(item));
+tasks.map((item) => console.log(item));
