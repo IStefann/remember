@@ -16,9 +16,10 @@ function CreateTask(title, description, dateAdded, dateDue, priority, category) 
 };
 
 
-function createCategory(name) {
+function createCategory(name, imgPath) {
     return {
-        name
+        name,
+        imgPath
     }
 };
 

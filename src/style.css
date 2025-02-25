@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --background: #A59D84;
+    --containerColor: #D7D3BF;
+    --containerTabs: #ECEBDE;
+    --activeTask: #C1BAA1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--background);
+}
+
+.container {
+    background-color: var(--containerColor);
+    width: 80rem;
+    height: 40rem;
+    border-radius: 50px;
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 5fr;
+    gap: 50px;
+    font-family: "Ubuntu", serif;
+    box-shadow: 5px 20px 5px -15px rgb(99, 99, 99);
+}
+
+.container>*:nth-child(n+2) {
+    background-color: var(--containerTabs);
+    border-radius: 20px;
+}
+
+.container>div:nth-child(3) {
+    padding: 1rem;
+}
+
+li:first-child {
+    margin-top: 1rem;
+}
+
+li {
+    list-style-type: none;
+    padding: 0.3rem 0 0.3rem 1rem;
+    margin: 0.2rem 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.activeTask {
+    background-color: var(--activeTask);
+    border-radius: 5px;
+}
+
+li:hover {
+    background-color: var(--activeTask);
+    border-radius: 5px;
+}
+
+li:active {
+    opacity: 0.7;
+    transform: translateY(1px);
+}
+
+img {
+    width: 1rem;
+}
+
+#currentTab>img {
+    width: 1.5rem;
+}
+
+.tab:nth-child(2) {
+    margin-top: 3rem;
+}
+
+.logo {
+    align-content: center;
+    justify-self: center;
+    font-size: 3rem;
+}
+
+.underLogo {
+    display: block;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.tab {
+    font-size: 1.3rem;
+}
+
+#currentTab {
+    font-size: 2rem;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#notesContainer {
+    font-family: "Indie Flower", serif;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+    overflow-y: scroll;
+}
+
+.note {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 5px;
+    max-height: 14rem;
+}
+
+#noteTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    font-size: 2rem;
+}
+
+#noteContent {
+    padding: 0.5rem 1rem 1rem;
+    white-space: pre-wrap;
+    font-size: 1.4rem;
+    overflow-y: scroll;
+    flex-grow: 1;
+}
+
+.noteDates {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Ubuntu", serif;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.noteDates>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.lowPrio {
+    background-color: green;
+}
+
+.midPrio {
+    background-color: orange;
+}
+
+.highPrio {
+    background-color: rgb(170, 38, 38);
+}
