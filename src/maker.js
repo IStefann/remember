@@ -3,6 +3,8 @@
 //         this.name = name;
 //     }
 // }
+let tasks = [];
+let categories = [];
 
 function CreateTask(title, description, dateAdded, dateDue, priority, category) {
     return {
@@ -23,7 +25,16 @@ function createCategory(name, imgPath) {
     }
 };
 
-export {createCategory, CreateTask};
+function makeCategory(name, imgPath) {
+    categories.push(createCategory(name, imgPath));
+}
+
+function makeTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, categories) {
+    tasks.push(CreateTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, categories[0]));
+}
+
+
+export {makeCategory, makeTask, tasks,categories};
 
 // class TaskManager {
 //     constructor() {
