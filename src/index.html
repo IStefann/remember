@@ -12,7 +12,10 @@
     <div class="wrapper">
         <div class="container">
             <h1 class="logo">Remember<span class="underLogo">To Do App</span></h1>
-            <div id="currentTab"><img src="./assets/task.svg" alt="tasks.svg">All Tasks</div>
+            <div id="currentTab">
+                <div><img src="./assets/task.svg" alt="tasks.svg">All Tasks</div><button id="newNote"><img
+                        src="./assets/plus.svg" alt="plus.svg"></button>
+            </div>
             <div>
                 <ul id="taskTabs" class="tab">Tasks
                     <li id="all" class="activeTask"><img src="./assets/task.svg" alt="tasks.svg">All Tasks</li>
@@ -20,11 +23,36 @@
                     <li id="upcoming"><img src="./assets/upcoming.svg " alt="upcoming.svg">Upcoming</li>
                     <li id="completed"><img src="./assets/completed.svg " alt="upcoming.svg">Completed</li>
                 </ul>
-                <ul id="categories" class="tab">Categories
+                <div class="tab">Categories <img src="./assets/plus.svg" alt="plus.svg"></div>
+                <ul id="categoryTabs" class="tab">
                 </ul>
             </div>
             <div id="notesContainer">
             </div>
+        </div>
+
+        <form id="categoryForm">
+        <div class="categoryModal">
+                <div>
+                    <label>Name:</label>
+                    <input type="text" name="categoryName" id="categoryName">
+                </div>
+                <div>
+                    <label>Choose Image: </label>
+                    <div class="images">
+                    <img src="./assets/shopping.svg" alt="shopping.svg">
+                    <img src="./assets/work.svg" alt="work.svg">
+                    <img src="./assets/gym.svg" alt="gym.svg">
+                    <img src="./assets/shopping.svg" alt="shopping.svg">
+                    <img src="./assets/work.svg" alt="work.svg">
+                    <img src="./assets/gym.svg" alt="gym.svg">
+                    <img src="./assets/shopping.svg" alt="shopping.svg">
+                    <img src="./assets/work.svg" alt="work.svg">
+                    <img src="./assets/gym.svg" alt="gym.svg">
+                </div>
+                <input type="submit" value="Add" id="submit"/>
+                </div>
+            </form>
         </div>
     </div>
 </body>

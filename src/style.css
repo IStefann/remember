@@ -32,7 +32,7 @@
     grid-template-rows: 1fr 5fr;
     gap: 50px;
     font-family: "Ubuntu", serif;
-    box-shadow: 5px 20px         5px -15px rgb(99, 99, 99);
+    box-shadow: 5px 20px 5px -15px rgb(99, 99, 99);
 }
 
 .container>*:nth-child(n+2) {
@@ -44,8 +44,17 @@
     padding: 1rem;
 }
 
-li:first-child {
+li:first-of-type{   
     margin-top: 1rem;
+}   
+
+.tab>img{
+    cursor: pointer;
+}
+
+.tab>img:active{
+    opacity: 0.8;
+    transform: translateY(2px);
 }
 
 li {
@@ -84,6 +93,9 @@ img {
 
 .tab:nth-child(2) {
     margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
@@ -105,10 +117,20 @@ img {
 
 #currentTab {
     font-size: 2rem;
-    padding-left: 2rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: space-between;
+    padding: 0 1rem 0 2rem;
+}
+
+#currentTab>div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+#currentTab>div:first-child>img {
+    width: 1.5rem;
 }
 
 #notesContainer {
@@ -175,4 +197,64 @@ input {
 
 .highPrio {
     background-color: rgb(170, 38, 38);
+}
+
+#newNote {
+    padding: 1.2rem;
+    border: none;
+    background-color: var(--activeTask);
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+#newNote>img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#newNote:active{
+    opacity: 0.8;
+    transform:translateY(2px);
+}
+
+.categoryModal{
+        background-color: var(--containerColor);
+        z-index: 999;
+        border-radius: 30px;
+        padding:2rem 4rem;
+        font-family: "Ubuntu", serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+
+.categoryModal>div:nth-child(2), .categoryModal>div:first-child{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;    
+}
+
+.categoryModal input[type="text"]{
+    font-size: 1rem;
+    width: 50%;
+    border:none;
+    border-radius: 5px;
+    padding:1rem 0.5rem;
+    box-sizing: border-box;
+}
+
+.categoryModal img{
+    width: 2rem;
+    height: 2rem;
+    border:1px solid black;
+    padding:0.2rem;
+}
+
+.categoryModal .images{
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
 }
