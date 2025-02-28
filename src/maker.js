@@ -14,19 +14,18 @@ function CreateTask(title, description, dateAdded, dateDue, priority, category, 
 };
 
 
-function createCategory(name, imgPath) {
+function createCategory(name) {
     return {
-        name,
-        imgPath
+        name
     }
 };
 
-function makeCategory(name, imgPath) {
-    categories.push(createCategory(name, imgPath));
+function makeCategory(name) {
+    categories.push(createCategory(name));
 }
 
 function makeTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, categories) {
     tasks.push(CreateTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, categories[0]));
 }
 
-export {makeCategory, makeTask, tasks,categories};
+export {makeCategory, makeTask, tasks, categories};

@@ -5,11 +5,11 @@ const categoriesContainer = document.querySelector("#categoryTabs");
 function loadCategories() {
     categories.forEach(category => {
         const li = document.createElement("li");
-        const img = document.createElement("img");
-        img.setAttribute("src", category.imgPath);
-        li.appendChild(img);
+        const number = document.createElement("div");
+        number.classList.add("number");
         const name = document.createTextNode(category.name);
-        li.appendChild(name);
+        number.textContent = "1";
+        li.append(number,name);
         categoriesContainer.appendChild(li);
     });
 }
