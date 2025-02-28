@@ -42,6 +42,8 @@
 
 .container>div:nth-child(3) {
     padding: 1rem;
+    max-height: 100%;
+    overflow: scroll;
 }
 
 li:first-of-type {
@@ -219,7 +221,8 @@ input {
 
 #newNote:hover,
 button[type="submit"]:hover,
-.prioSquare:hover {
+.prioSquare:hover,
+#exit:hover {
     opacity: 0.8;
 }
 
@@ -228,7 +231,7 @@ button[type="submit"]:hover,
     background-color: var(--containerColor);
     z-index: 999;
     border-radius: 30px;
-    padding: 2rem 4rem;
+    padding: 2rem 2.5rem;
     font-family: "Ubuntu", serif;
     display: flex;
     flex-direction: column;
@@ -255,6 +258,12 @@ button[type="submit"]:hover,
     padding: 1rem 0.5rem;
     box-sizing: border-box;
     width: 100%;
+    border:none;
+    border-radius: 5px;
+}
+
+.noteModal input[type="text"]{
+    font-size: 1.5rem !important;
 }
 
 button[type="submit"] {
@@ -283,18 +292,25 @@ button[type="submit"]:active {
     width: 100%;
     border: none;
     border-radius: 5px;
+    font-family: "Indie Flower", serif;
+    font-weight: bold;
 }
-
+input[type="date"]{
+    font-size: 1.2rem;
+}
 textarea {
     resize: none;
     padding: 0.2rem;
+    font-family: "Indie Flower", serif;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .noteModal input[type="date"] {
     padding: 0.3rem;
 }
 
-.noteModal>div:nth-child(4)>div {
+.noteModal>div:nth-child(5)>div {
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -322,10 +338,11 @@ textarea {
     border: 1.5px solid black;
 }
 
-.noteModal select{
+.noteModal select {
     padding: 0.3rem;
 }
-.overlay{
+
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -351,6 +368,23 @@ textarea {
     background-color: var(--containerTabs);
 }
 
-.none{
+.none {
     display: none;
+}
+
+
+#error{
+    display: none;
+}
+
+.error{
+    color:red;
+    font-weight: bold;
+    font-size: 0.8rem;   
+    display: block !important;
+}
+
+.modalTitle{
+    font-family: "Indie Flower", serif;
+    font-size: 3rem;
 }

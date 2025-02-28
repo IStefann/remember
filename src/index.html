@@ -37,17 +37,18 @@
                 <div>
                     <label>Name:</label>
                     <input type="text" name="categoryName" id="categoryName" required>
+                    <p id="error">Category with that name already exists!</p>
                 </div>
                 <button type="submit" id="submitCategory">Add Category</button>
             </div>
         </form>
-
         <form id="noteForm" class="none">
             <div class="overlay"></div>
-            <div class="noteModal">
+            <div class="noteModal" id="temp">
+                <h1 class="modalTitle">New Note</h1>
                 <div>
                     <label>Title:</label>
-                    <input type="text" name="categoryName" id="categoryName" required>
+                    <input type="text" name="categoryName" id="noteName" required>
                 </div>
                 <div>
                     <label>Note content:</label>
@@ -60,15 +61,14 @@
                 <div>
                     <label>Priority:</label>
                     <div>
-                        <div id="selected" class="prioSquare prioSquareSelected"></div>
-                        <div class="prioSquare"></div>
-                        <div class="prioSquare"></div>
+                        <div id="1" class="prioSquare prioSquareSelected"></div>
+                        <div id="2" class="prioSquare"></div>
+                        <div id="3" class="prioSquare"></div>
                     </div>
                 </div>
                 <div>
                     <label>Category: </label>
-                    <select name="categorySelect" id="categorySelect"required>
-                        <option>Misc</option>
+                    <select name="categorySelect" id="categorySelect" required>
                     </select>
                 </div>
                 <button type="submit" id="submitNote">Add Note</button>

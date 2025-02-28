@@ -1,27 +1,45 @@
 import "./style.css";
 
-import { makeCategory, makeTask, categories } from "./maker.js";
-import { allTasksLoad } from "./allTasks.js";
+import { allTasksLoad, loadCategories } from "./loader.js";
 import { changeTitle } from "./containerTitle.js";
-import { loadCategories } from "./loadCategories.js";
+import { openCatModal, openNoteModal, submitCategory, submitTask, closeModal} from "./modals.js";
+import { example } from "./exampleState.js";
 
-
-makeCategory("Shopping");
-makeCategory("Work");
-makeCategory("Misc");
-
-makeTask("Shopping", `Remember to buy: 
-- Toilet paper, VERY IMPORTANT, tomorrow's a party night. Don't forget
-- Bread
-- Beer`, "1/1/25", "3/1/25", 3, categories[0], 0);
-makeTask("Work", "Finish project proposal and send it to the team", "20/2/25", "27/2/25", 2, categories[1], 0);
-makeTask("Doge", "Take doge out for a walk in the park", "25/2/25", "25/2/25", 1, categories[2], 0);
+example();
 loadCategories();
 allTasksLoad();
 
+let open = 0;
 const taskButtons = document.querySelectorAll("#taskTabs>li");
 const categoryButtons = document.querySelectorAll("#categoryTabs>li");
 const catModal = document.querySelector("#openCatModal");
+const noteModal = document.querySelector("#newNote");
+const submitCat = document.querySelector("#categoryForm");
+const sbmitTask = document.querySelector("#noteForm");
+const overlays = document.querySelectorAll(".overlay");
+
+catModal.addEventListener("click", () => {openCatModal(); open = 1;});
+noteModal.addEventListener("click", () => {openNoteModal(); open = 1;});
+submitCat.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitCategory(submitCat);
+    loadCategories()
+});
+
+sbmitTask.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitTask(sbmitTask);
+    allTasksLoad()
+});
+
+
+document.addEventListener("click", (e) => {
+    overlays.forEach(overlay => {
+    if(e.target === overlay)
+        closeModal();
+    });
+})
+
 
 taskButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -34,15 +52,14 @@ taskButtons.forEach(button => {
 
 categoryButtons.forEach(button => {
     button.addEventListener("click", () => {
-        if (button.classList.contains("active"))
-        {
+        if (button.classList.contains("active")) {
             button.classList.remove("active");
             button.querySelector(".number").classList.remove("selectedNumber")
         }
         else {
-             categoryButtons.forEach(b => { b.classList.remove("active"); b.querySelector(".number").classList.remove("selectedNumber") });
-             button.classList.add("active");
+            categoryButtons.forEach(b => { b.classList.remove("active"); b.querySelector(".number").classList.remove("selectedNumber") });
+            button.classList.add("active");
             button.querySelector(".number").classList.add("selectedNumber");
-         }
+        }
     })
 });

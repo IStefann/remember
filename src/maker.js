@@ -24,8 +24,8 @@ function makeCategory(name) {
     categories.push(createCategory(name));
 }
 
-function makeTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, categories) {
-    tasks.push(CreateTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, categories[0]));
+function makeTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, category, completed) {
+    tasks.push(CreateTask(titleTemp, descTemp, dateAddedTemp, dateDueTemp, priorityTemp, category, completed));
 }
 
 export {makeCategory, makeTask, tasks, categories};
