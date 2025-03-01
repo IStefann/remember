@@ -1,4 +1,4 @@
-import { categories, makeCategory } from "./maker";
+import { categories, makeCategory, makeTask } from "./maker";
 
 const priorities = document.querySelectorAll(".prioSquare");
 priorities.forEach(priority => {
@@ -21,9 +21,11 @@ function openNoteModal() {
     const formattedDate = currentDate.toISOString().split('T')[0];
     document.getElementById('dueDateModal').setAttribute('min', formattedDate);
     form.classList.remove("none");
-    categories.forEach(category => {
+    selector.textContent = "";
+    categories.forEach((category, index) => {
         const option = document.createElement("option");
         option.textContent = category.name;
+        option.setAttribute("id", index)
         selector.appendChild(option);
     })
 }
@@ -51,35 +53,33 @@ function submitCategory(form) {
     }
 }
 
-function submitTask(form){
+function submitTask(form) {
     const noteName = document.querySelector("#noteName").value;
     const noteContent = document.querySelector("#noteContentModal").value;
-    const dueDate = document.querySelector("#dueDateModal").value;
-    
+    let dueDate = document.querySelector("#dueDateModal").value;
+
     const currentDate = new Date();
     const month = currentDate.getMonth() + 1;
     const day = currentDate.getDate();
     const year = currentDate.getFullYear();
 
     const formattedDate = `${year.toString()}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-   
-    let selectedPrio;
-    priorities.forEach(priority => {       
-        if(priority.classList.contains("prioSquareSelected"))
-            selectedPrio = parseInt(priority.id);
-        });
-    
-    const categorySelect = document.querySelector("#categorySelect");
-    const selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
 
-    console.log({
-        title: noteName,
-        content: noteContent,
-        dueDate: dueDate,
-        date: formattedDate,
-        priority: selectedPrio,
-        category: selectedCategory
+    let selectedPrio;
+    priorities.forEach(priority => {
+        if (priority.classList.contains("prioSquareSelected"))
+            selectedPrio = parseInt(priority.id);
     });
+
+    const categorySelect = document.querySelector("#categorySelect");
+    const selectedCategory = categorySelect.options[categorySelect.selectedIndex].id;
+
+    if(dueDate == "")
+        dueDate = formattedDate;
+    makeTask(noteName, noteContent, formattedDate, dueDate, selectedPrio, categories[selectedCategory].name, 0);
+    form.classList.add("none");
+    form.querySelectorAll("input").forEach(i => i.value = "");
+    document.querySelector("#noteContentModal").value = "";
 }
 
 export { openCatModal, openNoteModal, submitCategory, submitTask, closeModal };
