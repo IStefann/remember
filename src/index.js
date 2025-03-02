@@ -5,13 +5,13 @@ import { allTasksLoad, loadCategories, loadToday } from "./loader.js";
 import { changeTitle } from "./containerTitle.js";
 import { openCatModal, openNoteModal, submitCategory, submitTask, closeModal } from "./modals.js";
 import { example } from "./exampleState.js";
+import { deleteTask } from "./deleter.js"
 
 example();
 loadCategories();
 allTasksLoad();
 
 const taskButtons = document.querySelectorAll("#taskTabs>li");
-const categoryButtons = document.querySelectorAll("#categoryTabs>li");
 const catModal = document.querySelector("#openCatModal");
 let noteModal = document.querySelector("#newNote");
 const submitCat = document.querySelector("#categoryForm");
@@ -20,6 +20,7 @@ const overlays = document.querySelectorAll(".overlay");
 
 catModal.addEventListener("click", openCatModal);
 noteModal.addEventListener("click", openNoteModal);
+assignCheckboxEventListeners();
 submitCat.addEventListener("submit", (e) => {
     e.preventDefault();
     submitCategory(submitCat);
@@ -33,9 +34,9 @@ sbmitTask.addEventListener("submit", (e) => {
     changeTitle("All Tasks", allTasksImg);
     loadCategories();
     noteModal = document.querySelector("#newNote");
-    noteModal.addEventListener("click", openNoteModal);
+    noteModal.addEventListener("click", openNoteModal); 
+    assignCheckboxEventListeners();
 });
-
 
 document.addEventListener("click", (e) => {
     overlays.forEach(overlay => {
@@ -58,19 +59,19 @@ taskButtons.forEach(button => {
             case ("today"): loadToday(); break;
             default: return;
         }
+        assignCheckboxEventListeners();
     })
 });
 
-categoryButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        if (button.classList.contains("active")) {
-            button.classList.remove("active");
-            button.querySelector(".number").classList.remove("selectedNumber")
-        }
-        else {
-            categoryButtons.forEach(b => { b.classList.remove("active"); b.querySelector(".number").classList.remove("selectedNumber") });
-            button.classList.add("active");
-            button.querySelector(".number").classList.add("selectedNumber");
-        }
-    })
-});
+
+function assignCheckboxEventListeners() {
+    let checkboxes = document.querySelectorAll("input[type=checkbox]");
+    checkboxes.forEach((checkBox, index) => {
+        checkBox.addEventListener("click", () => {
+            deleteTask(index);
+            loadCategories();
+            checkboxes = document.querySelectorAll("input[type=checkbox]");
+            assignCheckboxEventListeners();
+        });
+    });
+}

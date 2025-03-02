@@ -82,4 +82,8 @@ function loadToday(){
     })
 }
 
+function categoriesLoad(){
+    
+}
+
 export { allTasksLoad, loadCategories, loadToday }

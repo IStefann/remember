@@ -67,7 +67,6 @@ li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    cursor: pointer;
 }
 
 .active {
@@ -75,12 +74,13 @@ li {
     border-radius: 5px;
 }
 
-li:hover {
+#taskTabs>li:hover {
     background-color: var(--activeTask);
     border-radius: 5px;
+    cursor: pointer;
 }
 
-li:active {
+#taskTabs>li:active {
     opacity: 0.7;
     transform: translateY(1px);
 }
@@ -310,7 +310,7 @@ textarea {
     padding: 0.3rem;
 }
 
-.noteModal>div:nth-child(5)>div {
+.noteModal>div:nth-child(4)>div {
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -363,11 +363,6 @@ textarea {
     align-items: center;
     font-size: 1rem;
 }
-
-.selectedNumber {
-    background-color: var(--containerTabs);
-}
-
 .none {
     display: none;
 }
@@ -382,9 +377,4 @@ textarea {
     font-weight: bold;
     font-size: 0.8rem;   
     display: block !important;
-}
-
-.modalTitle{
-    font-family: "Indie Flower", serif;
-    font-size: 3rem;
 }
